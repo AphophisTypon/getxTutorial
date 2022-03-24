@@ -1,8 +1,8 @@
 import 'dart:convert';
 
-
-
 class UserId {
+  ///Um modelo de classe para as variavies do tipo userID, que representam os valores que o usuário teria anexado a ele
+  ///por exemplo
   final int id;
   final String email;
   final String first_name;
@@ -40,4 +40,9 @@ class UserId {
   String toJson() => json.encode(toMap());
 
   factory UserId.fromJson(String source) => UserId.fromMap(json.decode(source));
+
+  @override
+  String toString() {
+    return 'UserId(id: $id, email: $email, first_name: $first_name, last_name: $last_name, avatar: $avatar)';
+  }
 }

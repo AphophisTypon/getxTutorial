@@ -2,11 +2,14 @@
 import 'package:get/get.dart';
 import 'package:getx_tutorial/api/users_api.dart';
 import 'package:getx_tutorial/models/user_id.dart';
+import 'package:getx_tutorial/pages/profile_page.dart';
 
 class HomeController extends GetxController{
   int _couter = 0;
   List<UserId> _users = [];
+  bool _loading = true;
 
+  bool get loading => _loading;
   int get counter => _couter;
   List<UserId> get users => _users;
 
@@ -16,22 +19,21 @@ class HomeController extends GetxController{
     print('Dentro de on Init. Feito somente uma vez');
   }
 
-  void increment(){
-    this._couter++;
-    update(['text'], _couter > 10);
-  }
-
   @override
   void onReady() {
     print('Dentro de on Ready');
     super.onReady();
+    this.loadUsers(delay: 7);
   }
 
-  Future<void> loadUsers() async{
-    final data = await UsersAPI.instance.getUsers(1);
-    // this._users = [...data];
+  Future<void> loadUsers({int delay = 0}) async{
+    this._loading = false;
+    final data = await UsersAPI.instance.getUsers(1,delay: delay);
     this._users = data;
     update(['users']);
+  }
   
+  showUserProfile(UserId user){
+    Get.to(ProfilePage(),arguments: user);
   }
 }

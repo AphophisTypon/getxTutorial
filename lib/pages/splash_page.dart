@@ -10,10 +10,10 @@ class SplashPage extends StatelessWidget {
   Widget build(BuildContext context) {
       return GetBuilder(
         init: SplashController(),
-        builder: (build) => Scaffold(
+        builder: (build) => const Scaffold(
             // appBar: AppBar(title: const Text(''),),
             body: Center(
-              child: const CircularProgressIndicator()
+              child: CircularProgressIndicator()
             ),
         ),
       );

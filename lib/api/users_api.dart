@@ -10,13 +10,14 @@ class UsersAPI {
   final dio = Dio();
 
 
-   Future<List<UserId>> getUsers(int page) async {
+   Future<List<UserId>> getUsers(int page, {int delay = 0}) async {
     try {
-      final Response response = await dio.get('https://reqres.in/api/users',queryParameters: {"page":page});
-      return (response.data['data'] as List).map((e) => UserId.fromJson(e)).toList();
+      final Response response = await dio.get('https://reqres.in/api/users',queryParameters: {"page":page, "delay":delay});
+      return (response.data['data'] as List).map((e) => UserId.fromMap(e)).toList();
     
     
-    } catch (e,s) {      
+    } catch (e,s) {
+      print('Error on Dio');
       throw Exception('e==${e} s==${s}');
     }
   }
