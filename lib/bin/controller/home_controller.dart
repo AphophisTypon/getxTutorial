@@ -33,7 +33,12 @@ class HomeController extends GetxController{
     update(['users']);
   }
   
-  showUserProfile(UserId user){
-    Get.to(ProfilePage(),arguments: user);
+  Future<void> showUserProfile(UserId user) async{
+    String emoji = ':/';
+    final result = await Get.to<String>(ProfilePage(),arguments: user);
+    if(result == null){
+      emoji = '>:(';
+    }
+    print(emoji + 'result $result');
   }
 }

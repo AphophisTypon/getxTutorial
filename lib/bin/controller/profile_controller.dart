@@ -1,3 +1,5 @@
+///O papel desse cara é controlar algumns dos estados globais usados pelaa aplicação
+
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -20,17 +22,21 @@ class ProfileController extends GetxController{
 
   void goToBackWithData(){
     if(inputText.length > 0){
-      Get.back();
+      Get.back(
+        result: this._inputText
+      );
     }else{
       showCupertinoModalPopup(context: Get.overlayContext!, builder: (_){
-        return const CupertinoActionSheet(
+        return CupertinoActionSheet(
           title: Text('Error'),
-          actions: [
+          message: Text('TEU input estava errado, ele deve conter algum dado'),
+          cancelButton: CupertinoActionSheetAction(onPressed: ()=> Get.back(), child: Text('Retornar')),
+          
             // CupertinoActionSheet(
             //   title: Text('Error'),
             //   cancelButton: CupertinoActionSheetAction(onPressed: (_) => Get.back(), child: Text('Encerrar')),
             // )
-          ],
+          
         );
       });
       // Get.dialog(
