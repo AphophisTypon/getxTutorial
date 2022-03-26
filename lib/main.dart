@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:getx_tutorial/bin/controller/global_controller.dart';
 import 'package:getx_tutorial/pages/homepage.dart';
+import 'package:getx_tutorial/pages/reactive_page.dart';
 import 'package:getx_tutorial/pages/splash_page.dart';
 import 'package:get/get.dart';
 
@@ -16,7 +17,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Get.put(GlobalController());
-    return const GetMaterialApp(home: SplashPage(),
+    return const GetMaterialApp(
+      home: ReactivePage(),
     );
   }
 }

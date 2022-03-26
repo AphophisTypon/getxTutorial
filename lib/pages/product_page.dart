@@ -19,7 +19,9 @@ class ProductPage extends StatelessWidget {
             backgroundColor: Colors.orange,
             title: const Text('Product'),
             actions: [
-              GetBuilder<GlobalController>(id: 'favorites', builder: (build) => TextButton(onPressed: (){}, child: Text('Favorites ${build.favorites.length}')))
+              GetBuilder<GlobalController>(
+                id: 'favorites',
+                builder: (build) => TextButton(onPressed: (){}, child: Text('Favorites ${build.favorites.length}')))
             ],
             ),
           body: Container(
